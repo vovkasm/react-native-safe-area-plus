@@ -1,0 +1,48 @@
+{
+  "name": "react-native-safe-area-plus",
+  "version": "0.0.1",
+  "description": "SafeAreaView that actually work",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "react-native start",
+    "run-sample-ios": "react-native run-ios --project-path samples/SampleApp/ios",
+    "lint:js": "tslint -p tsconfig.json",
+    "test:ios": "xcodebuild test -workspace tests/TestApp/TestApp.xcworkspace -scheme TestApp -destination 'platform=iOS Simulator,name=iPhone X'"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "ios",
+    "mobile",
+    "safe-area"
+  ],
+  "author": "Vladimir Timofeev <vovkasm@gmail.com>",
+  "homepage": "https://github.com/vovkasm/react-native-safe-area-plus",
+  "bugs": {
+    "url": "https://github.com/vovkasm/react-native-safe-area-plus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vovkasm/react-native-safe-area-plus.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.0.34",
+    "@types/react-native": "^0.55.0",
+    "@vovkasm/tslint-config": "1.0.0",
+    "babel-preset-react-native": "^4.0.0",
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "tslint": "^5.9.1",
+    "typescript": "^2.9.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.55.0"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
