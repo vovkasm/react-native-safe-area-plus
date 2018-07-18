@@ -21,5 +21,6 @@ SafeArea tracking for React Native done right
   s.source_files        = 'ios/Classes/**/*.{h,m}'
 
   s.framework    = 'UIKit'
-  s.dependency   = 'React'
+
+  s.dependency 'React'
 end

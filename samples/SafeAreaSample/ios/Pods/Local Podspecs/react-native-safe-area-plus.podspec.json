@@ -1,0 +1,25 @@
+{
+  "name": "react-native-safe-area-plus",
+  "version": "0.0.1",
+  "summary": "SafeAreaView that actually work",
+  "description": "SafeArea tracking for React Native done right",
+  "homepage": "https://github.com/vovkasm/react-native-safe-area-plus",
+  "license": "MIT",
+  "authors": {
+    "Vladimir Timofeev": "vovkasm@gmail.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/vovkasm/react-native-safe-area-plus.git",
+    "tag": "v0.0.1"
+  },
+  "source_files": "ios/Classes/**/*.{h,m}",
+  "frameworks": "UIKit",
+  "dependencies": {
+    "React": [
+
+    ]
+  }
+}
