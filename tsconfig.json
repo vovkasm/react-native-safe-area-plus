@@ -15,9 +15,9 @@
     "strict": true,
     "target": "es6",
     "types": ["react", "react-native"],
-    "baseUrl": "lib/src"
+    "baseUrl": "src"
   },
   "include": [
-    "lib/src/*"
+    "src/*"
   ]
 }
