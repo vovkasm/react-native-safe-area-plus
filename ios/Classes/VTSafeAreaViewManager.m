@@ -1,28 +1,22 @@
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+#import "VTSafeAreaViewManager.h"
 
-#import "RCTSafeAreaViewManager.h"
+#import <React/RCTUIManager.h>
 
-#import "RCTSafeAreaShadowView.h"
-#import "RCTSafeAreaView.h"
-#import "RCTUIManager.h"
+#import "VTSafeAreaShadowView.h"
+#import "VTSafeAreaView.h"
 
-@implementation RCTSafeAreaViewManager
+@implementation VTSafeAreaViewManager
 
 RCT_EXPORT_MODULE()
 
 - (UIView *)view
 {
-  return [[RCTSafeAreaView alloc] initWithBridge:self.bridge];
+  return [[VTSafeAreaView alloc] initWithBridge:self.bridge];
 }
 
-- (RCTSafeAreaShadowView *)shadowView
+- (VTSafeAreaShadowView *)shadowView
 {
-  return [RCTSafeAreaShadowView new];
+  return [VTSafeAreaShadowView new];
 }
 
 @end

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RCTBridge;
 
-@interface RCTSafeAreaView : RCTView
+@interface VTSafeAreaView : RCTView
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;
 

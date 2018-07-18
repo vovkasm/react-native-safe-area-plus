@@ -1,23 +1,15 @@
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-#import "RCTSafeAreaShadowView.h"
-
 #import <React/RCTAssert.h>
 #import <yoga/Yoga.h>
 
-#import "RCTSafeAreaViewLocalData.h"
+#import "VTSafeAreaShadowView.h"
+#import "VTSafeAreaViewLocalData.h"
 
-@implementation RCTSafeAreaShadowView
+@implementation VTSafeAreaShadowView
 
-- (void)setLocalData:(RCTSafeAreaViewLocalData *)localData
+- (void)setLocalData:(VTSafeAreaViewLocalData *)localData
 {
-  RCTAssert([localData isKindOfClass:[RCTSafeAreaViewLocalData class]],
-    @"Local data object for `RCTSafeAreaShadowView` must be `RCTSafeAreaViewLocalData` instance.");
+  RCTAssert([localData isKindOfClass:[VTSafeAreaViewLocalData class]],
+    @"Local data object for `VTSafeAreaShadowView` must be `VTSafeAreaViewLocalData` instance.");
 
   UIEdgeInsets insets = localData.insets;
 
