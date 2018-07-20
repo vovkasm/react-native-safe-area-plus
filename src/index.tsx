@@ -1,5 +1,25 @@
+// tslint:disable:max-classes-per-file
+
 import React from 'react'
-import { requireNativeComponent, ViewProps } from 'react-native'
+import { requireNativeComponent, StyleSheet, ViewProps } from 'react-native'
+
+const s = StyleSheet.create({
+  host: {
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+})
+
+const VTSafeAreaHostView = requireNativeComponent<ViewProps>('VTSafeAreaHostView')
+
+export class SafeAreaHost extends React.Component<{}> {
+  render () {
+    return React.createElement(VTSafeAreaHostView, { children: this.props.children, style: s.host })
+  }
+}
 
 const VTSafeAreaView = requireNativeComponent<ViewProps>('VTSafeAreaView')
 
