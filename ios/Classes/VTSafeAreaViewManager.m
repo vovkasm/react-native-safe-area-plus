@@ -9,7 +9,7 @@
 RCT_EXPORT_MODULE()
 
 - (VTSafeAreaShadowView *)shadowView {
-  return [[VTSafeAreaShadowView alloc] init];
+  return [[VTSafeAreaShadowView alloc] initWithBridge:self.bridge];
 }
 
 @end

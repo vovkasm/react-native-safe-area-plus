@@ -9,7 +9,7 @@
 @implementation VTSafeAreaHostView {
     __weak RCTBridge *_bridge;
     BOOL _safeAreaAvailable;
-    UIEdgeInsets _currentSafeAreaInsets;
+    UIEdgeInsets _safeInsets;
 }
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
@@ -32,26 +32,16 @@ static BOOL UIEdgeInsetsEqualToEdgeInsetsWithThreshold(UIEdgeInsets insets1, UIE
     ABS(insets1.bottom - insets2.bottom) <= threshold;
 }
 
-#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000 /* __IPHONE_11_0 */
-
-- (void)safeAreaInsetsDidChange {
-    if (!_safeAreaAvailable) {
-        return;
-    }
-
-    [self setSafeAreaInsets:self.safeAreaInsets];
-}
-
-#endif
-
 // Emulate safe area for iOS < 11
 - (void)layoutSubviews {
-    NSLog(@"before layout");
     [super layoutSubviews];
-    NSLog(@"after layout");
-    if (_safeAreaAvailable) {
-        return;
+    if (@available(iOS 11.0, tvOS 11.0, *)) {
+        if (_safeAreaAvailable) {
+            [self setSafeInsets:self.safeAreaInsets];
+            return;
+        }
     }
+
     UIViewController* vc = self.reactViewController;
     if (!vc) {
         return;
@@ -70,16 +60,15 @@ static BOOL UIEdgeInsetsEqualToEdgeInsetsWithThreshold(UIEdgeInsets insets1, UIE
         safeAreaInsets.bottom = CGRectGetMaxY(self.bounds) - CGRectGetMaxY(localSafeArea);
     }
 
-    [self setSafeAreaInsets:safeAreaInsets];
+    [self setSafeInsets:safeAreaInsets];
 }
 
-- (void)setSafeAreaInsets:(UIEdgeInsets)safeAreaInsets {
-    if (UIEdgeInsetsEqualToEdgeInsetsWithThreshold(safeAreaInsets, _currentSafeAreaInsets, 1.0 / RCTScreenScale())) {
+- (void)setSafeInsets:(UIEdgeInsets)safeAreaInsets {
+    if (UIEdgeInsetsEqualToEdgeInsetsWithThreshold(safeAreaInsets, _safeInsets, 1.0 / RCTScreenScale())) {
         return;
     }
 
-    _currentSafeAreaInsets = safeAreaInsets;
-    NSLog(@"UI SafeArea: %@", NSStringFromUIEdgeInsets(safeAreaInsets));
+    _safeInsets = safeAreaInsets;
     RCTUIManager* uiManager = _bridge.uiManager;
 
     RCTAssertMainQueue();

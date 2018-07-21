@@ -4,10 +4,19 @@ NSString* const VTSafeAreaHostDidUpdateNotification = @"VTSafeAreaHostDidUpdate"
 
 @implementation VTSafeAreaHostShadowView
 
+- (CGRect)safeRect {
+    return UIEdgeInsetsInsetRect(self.layoutMetrics.frame, _safeAreaInsets);
+}
+
 - (void)setSafeAreaInsets:(UIEdgeInsets)insets {
-    _safeAreaInsets = insets;
-    NSLog(@"shadow SafeArea: %@", NSStringFromUIEdgeInsets(insets));
-    [[NSNotificationCenter defaultCenter] postNotificationName:VTSafeAreaHostDidUpdateNotification object:self];
+    if (!UIEdgeInsetsEqualToEdgeInsets(_safeAreaInsets, insets)) {
+        _safeAreaInsets = insets;
+        [[NSNotificationCenter defaultCenter] postNotificationName:VTSafeAreaHostDidUpdateNotification object:self];
+    }
+}
+
+- (void)layoutWithMetrics:(RCTLayoutMetrics)layoutMetrics layoutContext:(RCTLayoutContext)layoutContext {
+    [super layoutWithMetrics:layoutMetrics layoutContext:layoutContext];
 }
 
 @end
