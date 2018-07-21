@@ -9,7 +9,7 @@ const s = StyleSheet.create({
     flex: 1,
   },
   content: {
-    backgroundColor: 'rgb(0, 255, 0)',
+    backgroundColor: 'green',
     flex: 1,
   },
   safeArea: {
